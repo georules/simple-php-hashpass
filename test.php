@@ -17,4 +17,11 @@ else
 	echo "no";
 echo "\n";
 
+$v = validate_password($pass."2", $hash);
+if($v)
+	echo "yes";
+else
+	echo "no";
+echo "\n";
+
 ?>
