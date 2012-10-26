@@ -5,8 +5,12 @@ http://php.net/manual/en/function.crypt.php
 
 Using PBKDF2 would be better, but iSpace does not have mcrypt installed
 http://www.php.net/manual/en/book.mcrypt.php
-http://crackstation.net/hashing-security.htm#phpsourcecode
+http://crackstation.net/hashing-security.htm
 https://defuse.ca/php-pbkdf2.htm
+
+Using Blowfish would be better, but iSpace has php 5.3.3 and 
+$2y$ mode was added in php 2.3.7
+http://phpmaster.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
