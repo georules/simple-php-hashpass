@@ -9,7 +9,7 @@ http://crackstation.net/hashing-security.htm
 https://defuse.ca/php-pbkdf2.htm
 
 Using Blowfish would be better, but iSpace has php 5.3.3 and 
-$2y$ mode was added in php 2.3.7
+$2y$ mode was added in php 5.3.7
 http://phpmaster.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
 
 This program is free software: you can redistribute it and/or modify
