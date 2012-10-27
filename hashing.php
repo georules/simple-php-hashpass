@@ -24,15 +24,16 @@ GNU General Public License for more details.
 
 Please see http://www.gnu.org/licenses/gpl.txt for GPL3 information
 */
-function create_salt() {
+function create_salt($saltlen=16) {
 	$salt = ""; 
-	for ($i = 0; $i < 16; $i++) { 
-		$salt .= substr("./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", mt_rand(0, 63), 1); 
+	$chars = "./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	for ($i = 0; $i < $saltlen; $i++) { 
+		$rand = mt_rand(0, strlen($chars)-1);
+		$salt .= substr($chars, $rand, 1); 
 	} 
 	return $salt;
 }
-function create_hash($password, $hashsalt=null) {
-	$mode = '$5$rounds=5000$';
+function create_hash($password, $hashsalt=null, $mode='$5$rounds=5000$') {
 	if (empty($hashsalt))	{
 		$salt = create_salt();
 		$salty = $mode.$salt;
@@ -56,14 +57,12 @@ function validate_password($password, $hash)	{
 
 /* Author: havoc AT defuse.ca
 	https://defuse.ca/php-pbkdf2.htm */
-function slow_equals($a, $b)
-{
-    $diff = strlen($a) ^ strlen($b);
-    for($i = 0; $i < strlen($a) && $i < strlen($b); $i++)
-    {
-        $diff |= ord($a[$i]) ^ ord($b[$i]);
-    }
-    return $diff === 0; 
+function slow_equals($a, $b)	{
+	$diff = strlen($a) ^ strlen($b);
+	for($i = 0; $i < strlen($a) && $i < strlen($b); $i++)	{
+		$diff |= ord($a[$i]) ^ ord($b[$i]);
+	}
+	return $diff === 0; 
 }
 
 
