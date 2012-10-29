@@ -27,8 +27,9 @@ Please see http://www.gnu.org/licenses/gpl.txt for GPL3 information
 function create_salt($saltlen=16) {
 	$salt = ""; 
 	$chars = "./ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	$numchars = strlen($chars)-1;
 	for ($i = 0; $i < $saltlen; $i++) { 
-		$rand = mt_rand(0, strlen($chars)-1);
+		$rand = mt_rand(0, $numchars);
 		$salt .= substr($chars, $rand, 1); 
 	} 
 	return $salt;
